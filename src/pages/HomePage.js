@@ -1,12 +1,37 @@
-// HomePage.js
 import React from 'react';
+import { useAuth } from '../auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { Button, Box, Typography } from '@mui/material';
+import Search from '../pages/SearchPage';
+import GamesPage from '../pages/GamesPage';
 
-function HomePage() {
+const HomePage = () => {
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
+
     return (
-        <div>
-            <h1>Bienvenido a la pagina de Tienda de juegos</h1>
-        </div>
+        <Box sx={{ p: 4 }}>
+            <Box sx={{ textAlign: 'center', mb: 4 }}>
+                <Typography variant="h3" gutterBottom>
+                    Bienvenido al Home
+                </Typography>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={handleLogout}
+                >
+                    Cerrar Sesión
+                </Button>
+            </Box>
+            <Search />
+            <GamesPage />
+        </Box>
     );
-}
+};
 
 export default HomePage;
