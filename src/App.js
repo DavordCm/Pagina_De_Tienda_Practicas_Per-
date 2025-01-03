@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import GamesPage from './pages/GamesPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -22,7 +21,6 @@ function App() {
                     path="/games"
                     element={
                         <PrivateRoute>
-                            <GamesPage />
                         </PrivateRoute>
                     }
                 />
